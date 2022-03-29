@@ -10,7 +10,6 @@ export default defineComponent({
     data: () => {
         return {
             episodes: [],
-            info: [],
             error: "",
 
         }
@@ -18,8 +17,9 @@ export default defineComponent({
         axios.get("https://rickandmortyapi.com/api/episode")
             .then((data) => {
                 this.episodes = data.data.results;
-                this.info = data.data.info;
-                console.log(this.episodes);
+                // console.log(this.episodes);
+                this.$store.commit('addEpisodes', this.episodes);
+                console.log(this.$store.getters.getEpisodes);
             })
             .catch((error) => {
                 this.error = error;
@@ -30,18 +30,20 @@ export default defineComponent({
 
 <template>
     <Navbar />
-    <h1>Episode !!!!</h1>
 
     <div v-for="episode in this.episodes">
         <div style="float: left; width: 25%;">
             <div class="cardEpisode">
                 <h1 class="titleEpisode">{{ episode.episode }}</h1>
                 <h5 class="dateEpisode">
-                    <em>{{ episode.created }}</em>
+                    <em>{{ episode.air_date }}</em>
                 </h5>
-                <h2>Nom : {{ episode.name }}</h2>
-
-                <RouterLink to="/InfoEpisode" tag="button" class="buttonLinkEpisode">Lien vers l'épisode</RouterLink>
+                <h2 class="nameEpisode">Nom : {{ episode.name }}</h2>
+                <RouterLink
+                    to="/InfoEpisode"
+                    tag="button"
+                    class="buttonMoreInfoEpisode"
+                >Plus d'infos</RouterLink>
             </div>
         </div>
     </div>
@@ -51,7 +53,7 @@ export default defineComponent({
 .cardEpisode {
     margin: 2%;
     padding: 2%;
-    height: 20em;
+    height: 15em;
     border: 2px solid grey;
     border-radius: 5px;
 }
@@ -61,12 +63,15 @@ export default defineComponent({
 .dateEpisode {
     margin: 0px;
 }
-.buttonLinkEpisode {
+.nameEpisode {
+    height: 3em;
+}
+.buttonMoreInfoEpisode {
     background-color: grey;
     border-radius: 5px;
     border: 0px;
     margin-right: 10px;
-    /* padding: 10%, 3%, 10%, 3%; */
+    padding: 5% 4% 5% 4%;
     padding-right: 3%;
     padding-left: 3%;
     text-decoration: none;
