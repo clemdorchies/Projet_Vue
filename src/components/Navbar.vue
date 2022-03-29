@@ -3,8 +3,9 @@
 
 <template>
     <div style="border: 2px solid grey; padding: 20px;">
-        <h1>Rick & Morty Project</h1>
-        <h2>By Michaël Champalet & Clément Dorchies</h2>
+        <h1 style="margin: 0px;">Rick & Morty Project</h1>
+        <h3 style="margin: 0px;">By</h3>
+        <h2 style="margin-top: 0px;">Michaël Champalet & Clément Dorchies</h2>
 
         <div style="margin: auto;">
             <RouterLink to="/" tag="button" class="buttonLeft">Accueil</RouterLink>
