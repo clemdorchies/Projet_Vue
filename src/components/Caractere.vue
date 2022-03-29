@@ -31,12 +31,33 @@ export default defineComponent({
 <template>
     <Navbar />
 
-    <div v-for="perso in this.personnages">
-        <img :src="perso.image" />
-        <div>nom :{{ perso.name }}</div>
+    <div class="page">
+        <div v-for="perso in this.personnages" class="perso_card">
+            <div>
+                
+            </div>
+            <img :src="perso.image" />
+            <div>{{ perso.name }}</div>
+        </div>
+        <table >
+        </table>
+        <button>a droite</button>
+        <button>a gauche</button>
     </div>
+    
 </template>
 
 <style>
+.page{
+    vertical-align: auto;
+}
+.perso_card{
+    border: 1px solid grey;
+    margin: 5px;
+    float:left;
+}
+.perso_card img{
+    width: 95%;
+}
 </style>
 
