@@ -4,6 +4,7 @@ import Accueil from "./Accueil.vue";
 import Caractere from "./Caractere.vue";
 import Episode from "./Episode.vue";
 import InfoEpisode from "./InfoEpisode.vue";
+import InfoPersonnage from "./InfoPersonnage.vue";
 
 // Nous créons d'abord nos Routes
 const routes = [
@@ -29,6 +30,12 @@ const routes = [
   {
     path: "/InfoEpisode",
     component: InfoEpisode,
+  },
+  // Ici, nous disons que pour la route "/InfoEpisode"
+  // Nous afficherons le composant "InfoEpisode.vue"
+  {
+    path: "/InfoPersonnage",
+    component: InfoPersonnage,
   },
 ];
 

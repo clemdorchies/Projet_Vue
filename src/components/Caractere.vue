@@ -25,18 +25,17 @@ export default defineComponent({
                 this.error = error;
             });
     }
-})
+});
+
+
 </script>
 
 <template>
     <Navbar />
 
     <div class="page">
-        <div v-for="perso in this.personnages" class="perso_card">
-            <div>
-                
-            </div>
-            <img :src="perso.image" />
+        <div v-for="perso in this.personnages" class="perso_card" >
+            <img :src="perso.image" v-on:click="$router.push('/InfoPersonnage')">
             <div>{{ perso.name }}</div>
         </div>
         <table >
