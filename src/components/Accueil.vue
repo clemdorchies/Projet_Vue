@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <RouterView/>
+Accueil !!!!
 </template>
 
 <style>

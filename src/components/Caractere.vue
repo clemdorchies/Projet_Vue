@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <RouterView/>
+Caractere !!!!
 </template>
 
 <style>
