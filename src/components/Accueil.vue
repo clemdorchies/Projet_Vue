@@ -1,11 +1,9 @@
-<script>
+<script setup>
+import Navbar from './Navbar.vue';
 </script>
 
 <template>
-    <h1>Accueil !!!!</h1>
-
-    <RouterLink to="/Caractere">Caractere</RouterLink> <br>
-    <RouterLink to="/Episode">Episode</RouterLink>
+    <Navbar />
 </template>
 
 <style>
