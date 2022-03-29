@@ -19,11 +19,11 @@
     background-color: grey;
     border-radius: 5px;
     border: 0px;
+    margin-right: 10px;
     padding-right: 3%;
     padding-left: 3%;
     text-decoration: none;
     color: white;
-    margin-right: 10px;
 }
 .buttonMid {
     background-color: grey;
