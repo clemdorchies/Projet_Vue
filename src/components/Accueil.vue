@@ -2,7 +2,10 @@
 </script>
 
 <template>
-Accueil !!!!
+    <h1>Accueil !!!!</h1>
+
+    <RouterLink to="/Caractere">Caractere</RouterLink> <br>
+    <RouterLink to="/Episode">Episode</RouterLink>
 </template>
 
 <style>
