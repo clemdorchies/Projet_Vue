@@ -7,18 +7,43 @@
         <h2>By Michaël Champalet & Clément Dorchies</h2>
 
         <div style="margin: auto;">
-            <button style="background-color: grey; border-radius: 5px; border: 0px; width: 10%; margin-right: 10px;">
-                <RouterLink to="/" style="text-decoration: none; color: white;">Accueil</RouterLink>
-            </button>
-            <button style="background-color: grey; border-radius: 5px; border: 0px; width: 10%; margin-left: 10px; margin-right: 10px;">
-                <RouterLink to="/Caractere" style="text-decoration: none; color: white;">Caractere</RouterLink>
-            </button>
-            <button style="background-color: grey; border-radius: 5px; border: 0px; width: 10%; margin-left: 10px;">
-                <RouterLink to="/Episode" style="text-decoration: none; color: white;">Episode</RouterLink>
-            </button>
+            <RouterLink to="/" tag="button" class="buttonLeft">Accueil</RouterLink>
+            <RouterLink to="/Caractere" tag="button" class="buttonMid">Caractere</RouterLink>
+            <RouterLink to="/Episode" tag="button" class="buttonRight">Episode</RouterLink>
         </div>
     </div>
 </template>
 
 <style>
+.buttonLeft {
+    background-color: grey;
+    border-radius: 5px;
+    border: 0px;
+    padding-right: 3%;
+    padding-left: 3%;
+    text-decoration: none;
+    color: white;
+    margin-right: 10px;
+}
+.buttonMid {
+    background-color: grey;
+    border-radius: 5px;
+    border: 0px;
+    padding-right: 3%;
+    padding-left: 3%;
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.buttonRight {
+    background-color: grey;
+    border-radius: 5px;
+    border: 0px;
+    padding-right: 3%;
+    padding-left: 3%;
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+}
 </style>

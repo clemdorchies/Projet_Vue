@@ -4,6 +4,7 @@ import Navbar from './Navbar.vue';
 
 <template>
     <Navbar />
+    <h1>Accueil !!!!</h1>
 </template>
 
 <style>
