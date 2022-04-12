@@ -11,19 +11,19 @@ export default defineComponent({
         return {
             episodes: [],
             error: "",
-
         }
-    }, mounted() {
+    }, 
+    mounted() {
         axios.get("https://rickandmortyapi.com/api/episode")
             .then((data) => {
                 this.episodes = data.data.results;
-                // console.log(this.episodes);
+                console.log(this.episodes);
                 this.$store.commit('addEpisodes', this.episodes);
-                console.log(this.$store.getters.getEpisodes);
             })
             .catch((error) => {
                 this.error = error;
             });
+        console.log(this.$store.getters.getEpisodes);
     }
 })
 </script>
@@ -39,11 +39,7 @@ export default defineComponent({
                     <em>{{ episode.air_date }}</em>
                 </h5>
                 <h2 class="nameEpisode">Nom : {{ episode.name }}</h2>
-                <RouterLink
-                    to="/InfoEpisode"
-                    tag="button"
-                    class="buttonMoreInfoEpisode"
-                >Plus d'infos</RouterLink>
+                <RouterLink to="/InfoEpisode" tag="button" class="buttonMoreInfoEpisode">Plus d'infos</RouterLink>
             </div>
         </div>
     </div>
@@ -57,15 +53,19 @@ export default defineComponent({
     border: 2px solid grey;
     border-radius: 5px;
 }
+
 .titleEpisode {
     margin: 0px;
 }
+
 .dateEpisode {
     margin: 0px;
 }
+
 .nameEpisode {
     height: 3em;
 }
+
 .buttonMoreInfoEpisode {
     background-color: grey;
     border-radius: 5px;
