@@ -40,15 +40,18 @@ export default defineComponent({
         </div>
         <table >
         </table>
+        
+    </div>
+    <div class="page">
         <button>a droite</button>
         <button>a gauche</button>
     </div>
-    
 </template>
 
 <style>
 .page{
     vertical-align: auto;
+    margin-left: 5%;
 }
 .perso_card{
     border: 1px solid grey;
