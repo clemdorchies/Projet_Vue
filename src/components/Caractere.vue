@@ -19,7 +19,8 @@ export default defineComponent({
             .then((data) => {
                 this.personnages = data.data.results;
                 this.info = data.data.info;
-                console.log(this.personnages);
+                this.$store.commit('addPersonnages', this.info);
+                console.log(this.$store.get(''))
             })
             .catch((error) => {
                 this.error = error;
