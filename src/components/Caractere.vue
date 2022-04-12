@@ -15,18 +15,21 @@ export default defineComponent({
 
         }
     }, mounted() {
-        axios.get("https://rickandmortyapi.com/api/character")
+        axios.get("https://rickandmortyapi.com/api/character/?page=1")
             .then((data) => {
                 this.personnages = data.data.results;
                 this.info = data.data.info;
                 this.$store.commit('addPersonnages', this.personnages);
-                console.log(this.$store.getters.getPersonnages);
+                this.$store.commit('addInfoPagePersonnages', this.info);
+                console.log(this.$store.getters.getInfoPagePersonnages.next);
+
                 
             })
             .catch((error) => {
                 this.error = error;
             });
-    }
+    },
+    
 });
 
 
@@ -48,8 +51,7 @@ export default defineComponent({
         
     </div>
     <div class="page">
-        <button v-on:click="">a droite</button>
-        <button>a gauche</button>
+        <button>+</button>
     </div>
 </template>
 

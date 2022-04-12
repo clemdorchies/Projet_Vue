@@ -4,7 +4,8 @@ const store = createStore({
   state() {
     return {
       episodes: [],
-      personnages: []
+      personnages: [],
+      infoPagePersonnages: {}
     }
   },
   getters: {
@@ -13,7 +14,10 @@ const store = createStore({
     },
     getPersonnages(state){
       return state.personnages;
-    }
+    },
+    getInfoPagePersonnages(state){
+      return state.infoPagePersonnages;
+    },
   },
   mutations: {
     addEpisodes(state, payload) {
@@ -21,7 +25,10 @@ const store = createStore({
     },
     addPersonnages(state, payload){
       state.personnages = payload;
-    } 
+    },
+    addInfoPagePersonnages(state, payload){
+      state.infoPagePersonnages = payload;
+    },
   }
 });
 export default store;
