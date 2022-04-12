@@ -36,7 +36,7 @@ const routes = [
   // Nous afficherons le composant "InfoEpisode.vue"
   {
     name : "InfoPersonnage",
-    path: "/InfoPersonnage/:id",
+    path: "/InfoPersonnage/:PersonnageId",
     component: InfoPersonnage,
   },
 ];

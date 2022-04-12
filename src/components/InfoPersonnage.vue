@@ -6,6 +6,9 @@ export default defineComponent({
     components: {
         Navbar,
     },
+    mounted(){
+        
+    }
 })
 
 </script>
