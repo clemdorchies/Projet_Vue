@@ -6,11 +6,14 @@ export default defineComponent({
     components: {
         Navbar,
     },
-    data: () => {
+    data () {
         return {
-            test : "",
+            test: "",
         }
     },
+    mounted () {
+        console.log(this.$store.getters.getEpisodes);
+    }
 })
 </script>
 
