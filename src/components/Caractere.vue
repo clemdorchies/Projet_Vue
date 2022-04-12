@@ -19,7 +19,8 @@ export default defineComponent({
             .then((data) => {
                 this.personnages = data.data.results;
                 this.info = data.data.info;
-                console.log(this.personnages);
+                this.$store.commit('addPersonnages', this.info);
+                console.log(this.$store.get(''))
             })
             .catch((error) => {
                 this.error = error;
@@ -40,15 +41,18 @@ export default defineComponent({
         </div>
         <table >
         </table>
+        
+    </div>
+    <div class="page">
         <button>a droite</button>
         <button>a gauche</button>
     </div>
-    
 </template>
 
 <style>
 .page{
     vertical-align: auto;
+    margin-left: 5%;
 }
 .perso_card{
     border: 1px solid grey;
