@@ -1,6 +1,6 @@
 <script>
 import Navbar from './Navbar.vue';
-import axios from "axios";
+import axios from 'axios';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
@@ -12,11 +12,12 @@ export default defineComponent({
             episodes: [],
             error: "",
         }
-    }, 
+    },
     mounted() {
         axios.get("https://rickandmortyapi.com/api/episode")
             .then((data) => {
                 this.episodes = data.data.results;
+                console.log(this.episodes);
                 this.$store.commit('addEpisodes', this.episodes);
             })
             .catch((error) => {
@@ -36,8 +37,11 @@ export default defineComponent({
                 <h5 class="dateEpisode">
                     <em>{{ episode.air_date }}</em>
                 </h5>
-                <h2 class="nameEpisode">Nom : {{ episode.name }}</h2>
-                <RouterLink :to="{name: 'InfoEpisode', params: {id: episode.id}}" tag="button" class="buttonMoreInfoEpisode">Plus d'infos</RouterLink>
+                <h2 class="nameEpisode">
+                    {{ episode.name }}
+                </h2>
+                <RouterLink :to="{ name: 'InfoEpisode', params: { id: episode.id } }" tag="button"
+                    class="buttonMoreInfoEpisode">Plus d'infos</RouterLink>
             </div>
         </div>
     </div>
