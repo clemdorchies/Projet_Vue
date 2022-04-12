@@ -9,7 +9,8 @@ export default defineComponent({
     },
     data: ()=>{
         return{
-        monPersonnage: {}
+        monPersonnage: {},
+        error: ""
         }
        
     },
@@ -30,13 +31,14 @@ export default defineComponent({
 <template>
     <Navbar/>
     
-    <div >
+    <div v-if="monPersonnage">
         <img :src="monPersonnage.image">
         {{monPersonnage.name}}
         {{monPersonnage.species}}
         {{monPersonnage.status}}
 
     </div>
+    <h3 v-else>{{error}}</h3>
 </template>
 
 <style>
