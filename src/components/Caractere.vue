@@ -19,8 +19,9 @@ export default defineComponent({
             .then((data) => {
                 this.personnages = data.data.results;
                 this.info = data.data.info;
-                this.$store.commit('addPersonnages', this.info);
-                console.log(this.$store.get(''))
+                this.$store.commit('addPersonnages', this.personnages);
+                console.log(this.$store.getters.getPersonnages);
+                
             })
             .catch((error) => {
                 this.error = error;
@@ -36,7 +37,10 @@ export default defineComponent({
 
     <div class="page">
         <div v-for="perso in this.personnages" class="perso_card" >
-            <img :src="perso.image" v-on:click="$router.push('/InfoPersonnage')">
+            <img :src="perso.image" v-on:click="$router.push({
+                name:'InfoPersonnage',
+                params:{PersonnageId: perso.id}
+            })">
             <div>{{ perso.name }}</div>
         </div>
         <table >
@@ -44,7 +48,7 @@ export default defineComponent({
         
     </div>
     <div class="page">
-        <button>a droite</button>
+        <button v-on:click="">a droite</button>
         <button>a gauche</button>
     </div>
 </template>

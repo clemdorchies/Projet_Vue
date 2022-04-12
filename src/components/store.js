@@ -8,7 +8,7 @@ const store = createStore({
     }
   },
   getters: {
-    getEpisodes (state) {
+    getEpisodes(state) {
       return state.episodes;
     },
     getPersonnages(state){
