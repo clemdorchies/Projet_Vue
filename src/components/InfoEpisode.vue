@@ -12,7 +12,7 @@ export default defineComponent({
         }
     },
     mounted () {
-        console.log(this.$store.getters.getEpisodes);
+        console.log(this.$route.params.id);
     }
 })
 </script>

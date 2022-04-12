@@ -28,13 +28,15 @@ const routes = [
   // Ici, nous disons que pour la route "/InfoEpisode"
   // Nous afficherons le composant "InfoEpisode.vue"
   {
-    path: "/InfoEpisode",
+    name : "InfoEpisode",
+    path: "/InfoEpisode/:id",
     component: InfoEpisode,
   },
   // Ici, nous disons que pour la route "/InfoEpisode"
   // Nous afficherons le composant "InfoEpisode.vue"
   {
-    path: "/InfoPersonnage",
+    name : "InfoPersonnage",
+    path: "/InfoPersonnage/:id",
     component: InfoPersonnage,
   },
 ];

@@ -17,13 +17,11 @@ export default defineComponent({
         axios.get("https://rickandmortyapi.com/api/episode")
             .then((data) => {
                 this.episodes = data.data.results;
-                console.log(this.episodes);
                 this.$store.commit('addEpisodes', this.episodes);
             })
             .catch((error) => {
                 this.error = error;
             });
-        console.log(this.$store.getters.getEpisodes);
     }
 })
 </script>
@@ -39,7 +37,7 @@ export default defineComponent({
                     <em>{{ episode.air_date }}</em>
                 </h5>
                 <h2 class="nameEpisode">Nom : {{ episode.name }}</h2>
-                <RouterLink to="/InfoEpisode" tag="button" class="buttonMoreInfoEpisode">Plus d'infos</RouterLink>
+                <RouterLink :to="{name: 'InfoEpisode', params: {id: episode.id}}" tag="button" class="buttonMoreInfoEpisode">Plus d'infos</RouterLink>
             </div>
         </div>
     </div>
