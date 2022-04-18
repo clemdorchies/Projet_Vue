@@ -18,7 +18,6 @@ export default defineComponent({
         axios.get('https://rickandmortyapi.com/api/character/'+this.$route.params.PersonnageId)
             .then((data) => {
                 this.monPersonnage = data.data;
-                console.log(this.monPersonnage);
             })
             .catch((error) => {
                 this.error = error;

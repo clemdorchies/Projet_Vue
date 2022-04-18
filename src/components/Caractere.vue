@@ -12,6 +12,7 @@ export default defineComponent({
             personnages: [],
             info: [],
             error: "",
+            nb_page: 1
 
         }
     }, mounted() {
@@ -29,6 +30,21 @@ export default defineComponent({
                 this.error = error;
             });
     },
+    methods:{
+        more(){
+            axios.get(this.$store.getters.getInfoPagePersonnages.next)
+            .then((data)=>{
+                console.log(this.personnages);
+                console.log(data.data.results);
+                this.personnages.concat(data.data.results);
+                this.$store.commit('addPersonnages', this.personnages);
+                
+            })
+            .catch((error)=>{
+                this.error = error;
+            })
+        }
+    }
     
 });
 
@@ -39,19 +55,17 @@ export default defineComponent({
     <Navbar />
 
     <div class="page">
-        <div v-for="perso in this.personnages" class="perso_card" >
-            <img :src="perso.image" v-on:click="$router.push({
-                name:'InfoPersonnage',
-                params:{PersonnageId: perso.id}
-            })">
-            <div>{{ perso.name }}</div>
-        </div>
-        <table >
-        </table>
+            <div v-for="perso in this.personnages" class="perso_card" >
+                <img :src="perso.image" v-on:click="$router.push({
+                    name:'InfoPersonnage',
+                    params:{PersonnageId: perso.id}
+                })">
+                <div>{{ perso.name }}</div>
+            </div>
         
     </div>
     <div class="page">
-        <button>+</button>
+        <button v-on:click="more">+</button>
     </div>
 </template>
 
