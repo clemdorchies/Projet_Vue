@@ -23,20 +23,31 @@ export default defineComponent({
                 this.$store.commit('addPersonnages', this.personnages);
                 this.$store.commit('addInfoPagePersonnages', this.info);
                 console.log(this.$store.getters.getInfoPagePersonnages.next);
-
-                
             })
             .catch((error) => {
                 this.error = error;
             });
     },
     methods:{
-        more(){
-            axios.get(this.$store.getters.getInfoPagePersonnages.next)
+        less(){
+            axios.get(this.info.prev)
             .then((data)=>{
-                console.log(this.personnages);
-                console.log(data.data.results);
-                this.personnages.concat(data.data.results);
+                this.personnages = data.data.results;
+                this.info = data.data.info;
+                
+                console.log(this.info);
+                this.$store.commit('addPersonnages', this.personnages);
+                
+            })
+            .catch((error)=>{
+                this.error = error;
+            })
+        },
+        more(){
+            axios.get(this.info.next)
+            .then((data)=>{
+                this.personnages = data.data.results;
+                this.info = data.data.info;
                 this.$store.commit('addPersonnages', this.personnages);
                 
             })
@@ -65,7 +76,8 @@ export default defineComponent({
         
     </div>
     <div class="page">
-        <button v-on:click="more">+</button>
+        <button v-on:click="less" v-if="info.prev != null">-</button>
+        <button v-on:click="more" v-if="info.next != null">+</button>
     </div>
 </template>
 
