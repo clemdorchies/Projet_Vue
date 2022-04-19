@@ -2,7 +2,8 @@
 </script>
 
 <template>
-    <RouterView />
+  <!-- Initialisation des routes -->
+  <RouterView />
 </template>
 
 <style>

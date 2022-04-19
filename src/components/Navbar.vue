@@ -8,8 +8,11 @@
         <h2 style="margin-top: 0px;">Michaël Champalet & Clément Dorchies</h2>
 
         <div style="margin: auto;">
+            <!-- Route vers l'accueil -->
             <RouterLink to="/" tag="button" class="button buttonLeft">Accueil</RouterLink>
+            <!-- Route vers la page caractère -->
             <RouterLink to="/Caractere" tag="button" class="button buttonMid">Caractere</RouterLink>
+            <!-- Route vers la page des épisodes -->
             <RouterLink to="/Episode" tag="button" class="button buttonRight">Episode</RouterLink>
         </div>
     </div>
