@@ -30,7 +30,7 @@ export default defineComponent({
 
     <div class="a_col1">
         <div v-if="personnages.length !== 0">
-            <h3>Personnages vu lors de votre visite</h3>
+            <h3>Personnages visités lors de votre visite</h3>
             <div v-for="perso in personnages">
                 <img :src="perso.image" v-on:click="$router.push({
                     name: 'InfoPersonnage',
@@ -40,19 +40,19 @@ export default defineComponent({
             </div>
         </div>
         <div v-else>
-            <h3>Vous n'avez pas encore vu de personnage lors de votre visite</h3>
+            <h3>Vous n'avez pas encore visité de personnage lors de votre visite</h3>
         </div>
     </div>
 
     <div class="a_col2">
         <div v-if="listEpisodes.length !== 0">
-            <h3>Episodes vu lors de votre visite</h3>
+            <h3>Episodes visités lors de votre visite</h3>
             <div v-for="episode in listEpisodes">
                 <h1 v-if="episode.checked == true" class="titleEpisode">{{ episode.episode }}</h1>
             </div>
         </div>
         <div v-else>
-            <h3>Vous n'avez pas encore vu d'épisode lors de votre visite</h3>
+            <h3>Vous n'avez pas encore visité d'épisode lors de votre visite</h3>
         </div>
     </div>
 </template>
