@@ -25,6 +25,8 @@ export default defineComponent({
         this.storeEpisode = this.$store.getters.getEpisodes[parseInt(this.$route.params.id) - 1]
         console.log(this.storeEpisode);
 
+        // TODO : Ajouter un condition si ce n'est pas présent dans le store
+
         // Boucle permettant d'appeler tout les personnages de l'épisode
         for (let i = 0; i < this.storeEpisode.characters.length; i++) {
             // Appel à l'API
@@ -57,9 +59,10 @@ export default defineComponent({
         <!-- Affichage des personnages de l'épisode -->
         <h2>Liste des personnages</h2>
         <div v-for="personnage in infoEpisodePersonnages">
-            <div class="cardPersonnage">
+            <div class="cardEpisode">
                 <div class="img">
                     <h4>{{ personnage.name }}</h4>
+                    <!-- TODO : Gestion de l'affichage des images web responsive -->
                     <img style="height: 100%" :src="personnage.image">
                 </div>
             </div>
@@ -73,7 +76,7 @@ export default defineComponent({
 </template>
 
 <style>
-.cardPersonnage {
+.cardEpisode {
     float: left;
     width: 25%;
     height: 25em;
