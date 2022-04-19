@@ -24,7 +24,9 @@ export default defineComponent({
             // Cas de succès
             .then((data) => {
                 this.episodes = data.data.results;
-                console.log(this.episodes);
+                for (let i = 0; i < this.episodes.length; i++) {
+                this.episodes[i].checked = false;
+                }
                 this.$store.commit('addEpisodes', this.episodes);
             })
             // Cas d'erreur

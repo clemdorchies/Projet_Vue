@@ -29,6 +29,10 @@ const store = createStore({
     addEpisodes(state, payload) {
       state.episodes = payload;
     },
+    // Ajout d'un épisode dans le store
+    addTest(state, i) {
+      state.episodes[i].checked = true;
+    },
     // Ajout d'un personnages dans l'historique des visites
     addPersonnages(state, payload){
       // Verification de l'existance du personnage dans l'historique des visite du personnages

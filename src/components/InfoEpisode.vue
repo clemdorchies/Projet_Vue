@@ -21,8 +21,11 @@ export default defineComponent({
         }
     },
     mounted() {
+        this.$store.commit('addTest', parseInt(this.$route.params.id) - 1);
+
         // Récupération des informations de l'épisode dans le store
         this.storeEpisode = this.$store.getters.getEpisodes[parseInt(this.$route.params.id) - 1]
+
         console.log(this.storeEpisode);
 
         // TODO : Ajouter un condition si ce n'est pas présent dans le store
@@ -59,7 +62,7 @@ export default defineComponent({
         <!-- Affichage des personnages de l'épisode -->
         <h2>Liste des personnages</h2>
         <div v-for="personnage in infoEpisodePersonnages">
-            <div class="cardEpisode">
+            <div class="cardInfoEpisode">
                 <div class="img">
                     <h4>{{ personnage.name }}</h4>
                     <!-- TODO : Gestion de l'affichage des images web responsive -->
@@ -76,7 +79,7 @@ export default defineComponent({
 </template>
 
 <style>
-.cardEpisode {
+.cardInfoEpisode {
     float: left;
     width: 25%;
     height: 25em;

@@ -72,6 +72,7 @@ export default defineComponent({
             <div v-for="perso in personnages">
                 <div class="cardPersonnage">
                     <div class="img">
+                        <!-- Image qui renvoie vers la page personnalisé du personnage -->
                         <img style="width: 100%;" :src="perso.image" v-on:click="$router.push({
                             name: 'InfoPersonnage',
                             params: { PersonnageId: perso.id }
