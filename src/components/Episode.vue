@@ -1,14 +1,17 @@
 <script>
+// Importation
 import Navbar from './Navbar.vue';
 import Error from './Error.vue';
 import axios from 'axios';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
+    // Ajout des composants utiles à la page
     components: {
-    Navbar,
-    Error,
-},
+        Navbar,
+        Error,
+    },
+    // Les variables utiles à la page
     data: () => {
         return {
             episodes: [],
@@ -16,12 +19,15 @@ export default defineComponent({
         }
     },
     mounted() {
+        // Appel à l'API
         axios.get("https://rickandmortyapi.com/api/episode")
+            // Cas de succès
             .then((data) => {
                 this.episodes = data.data.results;
                 console.log(this.episodes);
                 this.$store.commit('addEpisodes', this.episodes);
             })
+            // Cas d'erreur
             .catch((error) => {
                 this.error = error;
             });
@@ -32,7 +38,9 @@ export default defineComponent({
 <template>
     <Navbar />
 
+    <!-- Cas de succès de l'API -->
     <div v-if="error === ''">
+        <!-- Affichage des épisodes -->
         <div v-for="episode in this.episodes">
             <div style="float: left; width: 25%;">
                 <div class="cardEpisode">
@@ -43,6 +51,8 @@ export default defineComponent({
                     <h2 class="nameEpisode">
                         {{ episode.name }}
                     </h2>
+                    <!-- Direction une autre page pour plus d'informations -->
+                    <!-- On passe en paramètre l'id de l'épisode -->
                     <RouterLink :to="{ name: 'InfoEpisode', params: { id: episode.id } }" tag="button"
                         class="buttonMoreInfoEpisode">Plus d'infos</RouterLink>
                 </div>
@@ -50,6 +60,7 @@ export default defineComponent({
         </div>
     </div>
 
+    <!-- Cas d'erreur de l'API -->
     <div v-else>
         <Error />
     </div>
