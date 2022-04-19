@@ -24,7 +24,15 @@ const store = createStore({
       state.episodes = payload;
     },
     addPersonnages(state, payload){
-      state.personnages.push(payload);
+      let found = false;
+      state.personnages.forEach(element => {
+        if(element.id == payload.id){
+          found = true;
+        }
+      });
+      if(found === false){
+        state.personnages.push(payload);
+      }
     },
     addInfoPagePersonnages(state, payload){
       state.infoPagePersonnages = payload;

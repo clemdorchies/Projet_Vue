@@ -57,7 +57,7 @@ export default defineComponent({
     <Navbar />
 
     <div class="page">
-            <div v-for="perso in this.personnages" class="perso_card" >
+            <div v-for="perso in personnages" class="perso_card" >
                 <img :src="perso.image" v-on:click="$router.push({
                     name:'InfoPersonnage',
                     params:{PersonnageId: perso.id}
