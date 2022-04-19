@@ -5,16 +5,17 @@ import axios from "axios";
 import { defineComponent } from 'vue';
 
 export default defineComponent({
+    // Ajout des composants utiles à la page
     components: {
         Navbar,
         Error
     },
+    // Les variables utiles à la page
     data: () => {
         return {
             personnages: [],
             info: [],
             error: '',
-            nb_page: 1
 
         }
     }, mounted() {
@@ -28,10 +29,14 @@ export default defineComponent({
             });
     },
     methods:{
+        //fonction pour appel des pages d'avant
         less(){
+            //appel API avec info.prev => URL de l'api
             axios.get(this.info.prev)
             .then((data)=>{
+                //mise à jour des personnages
                 this.personnages = data.data.results;
+                //mise à jour des infos
                 this.info = data.data.info;
                 
             })
@@ -39,10 +44,14 @@ export default defineComponent({
                 this.error = error;
             })
         },
+        //fonction pour appel des pages d'après
         more(){
+            //appel API avec info.prev => URL de l'api
             axios.get(this.info.next)
             .then((data)=>{
+                //mise à jour des personnages
                 this.personnages = data.data.results;
+                //mise à jour des infos
                 this.info = data.data.info;
                 
             })
@@ -66,12 +75,13 @@ export default defineComponent({
                 })">
                 <div>{{ perso.name }}</div>
             </div>
-        
-    </div>
-    <div class="page">
-        <button v-on:click="less" v-if="info.prev != null">-</button>
-        <button v-on:click="more" v-if="info.next != null">+</button>
-    </div>
+        </div>
+        <div class="page">
+            <!-- bouton pour appeler la fonction less avec verification de l'existance de info.prev -->
+            <button v-on:click="less" v-if="info.prev != null">-</button>
+            <!-- bouton pour appeler la fonction more avec verification de l'existance de info.next -->
+            <button v-on:click="more" v-if="info.next != null">+</button>
+        </div>
     </div>
     
 
