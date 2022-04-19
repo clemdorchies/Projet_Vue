@@ -31,7 +31,7 @@ const store = createStore({
     },
     // Ajout d'un personnages dans l'historique des visites
     addPersonnages(state, payload){
-      //Verification de l'existance du personnage dans l'historique des visite du personnages
+      // Verification de l'existance du personnage dans l'historique des visite du personnages
       let found = false;
       state.personnages.forEach(element => {
         if(element.id == payload.id){
