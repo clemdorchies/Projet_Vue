@@ -8,7 +8,9 @@ const store = createStore({
       infoPagePersonnages: {}
     }
   },
+  // Mise en place des getters
   getters: {
+    // Getters pour un épisode
     getEpisodes(state) {
       return state.episodes;
     },
@@ -19,7 +21,9 @@ const store = createStore({
       return state.infoPagePersonnages;
     },
   },
+  // Mise en place des mutations
   mutations: {
+    // Ajout d'un épisode dans le store
     addEpisodes(state, payload) {
       state.episodes = payload;
     },

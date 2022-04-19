@@ -21,7 +21,7 @@ export default defineComponent({
         }
     },
     mounted() {
-        // Information des personnages déjà présent dans le store
+        // Récupération des informations de l'épisode dans le store
         this.storeEpisode = this.$store.getters.getEpisodes[parseInt(this.$route.params.id) - 1]
         console.log(this.storeEpisode);
 
