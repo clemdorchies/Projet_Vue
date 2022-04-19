@@ -24,7 +24,7 @@ const store = createStore({
       state.episodes = payload;
     },
     addPersonnages(state, payload){
-      state.personnages = payload;
+      state.personnages.push(payload);
     },
     addInfoPagePersonnages(state, payload){
       state.infoPagePersonnages = payload;
