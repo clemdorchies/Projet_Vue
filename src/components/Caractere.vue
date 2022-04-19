@@ -70,6 +70,7 @@ export default defineComponent({
     <div v-if="error === ''">
         <div class="page">
             <div v-for="perso in personnages" class="perso_card" >
+                <!-- Image qui renvoie vers la page personnalisé du personnage -->
                 <img :src="perso.image" v-on:click="$router.push({
                     name:'InfoPersonnage',
                     params:{PersonnageId: perso.id}
