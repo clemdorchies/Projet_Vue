@@ -28,8 +28,6 @@ export default defineComponent({
                 // récupération de la localisation
                 this.location = data.data.location.name;
                 this.$store.commit('addPersonnages', data.data);
-                
-                console.log(this.monPersonnage);
             })
             .catch((error) => {
                 this.error = error;

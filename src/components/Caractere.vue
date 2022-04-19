@@ -19,6 +19,7 @@ export default defineComponent({
 
         }
     }, mounted() {
+        //appel API pour avoir la liste des personnages de la première page
         axios.get("https://rickandmortyapi.com/api/character/?page=1")
             .then((data) => {
                 this.personnages = data.data.results;
