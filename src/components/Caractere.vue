@@ -1,17 +1,19 @@
 <script>
 import Navbar from './Navbar.vue';
+import Error from './Error.vue';
 import axios from "axios";
 import { defineComponent } from 'vue';
 
 export default defineComponent({
     components: {
         Navbar,
+        Error
     },
     data: () => {
         return {
             personnages: [],
             info: [],
-            error: "",
+            error: '',
             nb_page: 1
 
         }
@@ -55,8 +57,8 @@ export default defineComponent({
 
 <template>
     <Navbar />
-
-    <div class="page">
+    <div v-if="error === ''">
+        <div class="page">
             <div v-for="perso in personnages" class="perso_card" >
                 <img :src="perso.image" v-on:click="$router.push({
                     name:'InfoPersonnage',
@@ -69,6 +71,13 @@ export default defineComponent({
     <div class="page">
         <button v-on:click="less" v-if="info.prev != null">-</button>
         <button v-on:click="more" v-if="info.next != null">+</button>
+    </div>
+    </div>
+    
+
+    <!-- Cas d'erreur de l'API -->
+    <div v-else>
+        <Error />
     </div>
 </template>
 

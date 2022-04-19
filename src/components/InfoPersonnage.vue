@@ -1,16 +1,19 @@
 <script>
 import { defineComponent } from 'vue';
+import Error from './Error.vue';
 import axios from "axios";
 import Navbar from './Navbar.vue';
 
 export default defineComponent({
     components: {
         Navbar,
+        Error,
     },
     data: ()=>{
         return{
         monPersonnage: {},
-        error: ""
+        location: "",
+        error: ''
         }
        
     },
@@ -18,9 +21,10 @@ export default defineComponent({
         axios.get('https://rickandmortyapi.com/api/character/'+this.$route.params.PersonnageId)
             .then((data) => {
                 this.monPersonnage = data.data;
+                this.location = data.data.location.name;
                 this.$store.commit('addPersonnages', data.data);
                 
-                console.log(this.$store.getters.getPersonnages);
+                console.log(this.monPersonnage);
             })
             .catch((error) => {
                 this.error = error;
@@ -34,13 +38,21 @@ export default defineComponent({
     <Navbar/>
     
     <div v-if="monPersonnage">
+    <div>
         <img :src="monPersonnage.image">
-        {{monPersonnage.name}}
-        {{monPersonnage.species}}
-        {{monPersonnage.status}}
+        <br>
+        Nom : {{monPersonnage.name}} <br>
+        Race : {{monPersonnage.species}} <br>
+        Statut : {{monPersonnage.status}} <br>
+        location : {{location }}
+    </div>
+        
 
     </div>
-    <h3 v-else>{{error}}</h3>
+    <!-- Cas d'erreur de l'API -->
+    <div v-else>
+        <Error />
+    </div>
 </template>
 
 <style>
