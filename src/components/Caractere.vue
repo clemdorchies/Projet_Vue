@@ -20,9 +20,6 @@ export default defineComponent({
             .then((data) => {
                 this.personnages = data.data.results;
                 this.info = data.data.info;
-                this.$store.commit('addPersonnages', this.personnages);
-                this.$store.commit('addInfoPagePersonnages', this.info);
-                console.log(this.$store.getters.getInfoPagePersonnages.next);
             })
             .catch((error) => {
                 this.error = error;
@@ -35,9 +32,6 @@ export default defineComponent({
                 this.personnages = data.data.results;
                 this.info = data.data.info;
                 
-                console.log(this.info);
-                this.$store.commit('addPersonnages', this.personnages);
-                
             })
             .catch((error)=>{
                 this.error = error;
@@ -48,7 +42,6 @@ export default defineComponent({
             .then((data)=>{
                 this.personnages = data.data.results;
                 this.info = data.data.info;
-                this.$store.commit('addPersonnages', this.personnages);
                 
             })
             .catch((error)=>{
@@ -58,8 +51,6 @@ export default defineComponent({
     }
     
 });
-
-
 </script>
 
 <template>
