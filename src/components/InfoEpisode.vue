@@ -1,12 +1,14 @@
 <script>
 import Navbar from './Navbar.vue';
+import Error from './Error.vue';
 import axios from 'axios';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
     components: {
-        Navbar,
-    },
+    Navbar,
+    Error,
+},
     data() {
         return {
             storeEpisode: [],
@@ -34,19 +36,26 @@ export default defineComponent({
 
 <template>
     <Navbar />
-    <h1 class="titleEpisode">{{ storeEpisode.episode }} - {{ storeEpisode.name }}</h1>
-    <h5 class="dateEpisode">
-        <em>{{ storeEpisode.air_date }}</em>
-    </h5>
 
-    <h2>Liste des personnages</h2>
-    <div v-for="personnage in infoEpisodePersonnages">
-        <div class="cardPersonnage">
-            <div class="img">
-                <h4>{{ personnage.name }}</h4>
-                <img style="height: 100%" :src="personnage.image">
+    <div v-if="error === ''">
+        <h1 class="titleEpisode">{{ storeEpisode.episode }} - {{ storeEpisode.name }}</h1>
+        <h5 class="dateEpisode">
+            <em>{{ storeEpisode.air_date }}</em>
+        </h5>
+
+        <h2>Liste des personnages</h2>
+        <div v-for="personnage in infoEpisodePersonnages">
+            <div class="cardPersonnage">
+                <div class="img">
+                    <h4>{{ personnage.name }}</h4>
+                    <img style="height: 100%" :src="personnage.image">
+                </div>
             </div>
         </div>
+    </div>
+
+    <div v-else>
+        <Error />
     </div>
 </template>
 
@@ -54,8 +63,7 @@ export default defineComponent({
 .cardPersonnage {
     float: left;
     width: 25%;
-    background-color: rgb(191, 191, 191);
-    height: 18em;
+    height: 25em;
 }
 
 .img {

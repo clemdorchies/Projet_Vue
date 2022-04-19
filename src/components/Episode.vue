@@ -1,12 +1,14 @@
 <script>
 import Navbar from './Navbar.vue';
+import Error from './Error.vue';
 import axios from 'axios';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
     components: {
-        Navbar,
-    },
+    Navbar,
+    Error,
+},
     data: () => {
         return {
             episodes: [],
@@ -30,20 +32,26 @@ export default defineComponent({
 <template>
     <Navbar />
 
-    <div v-for="episode in this.episodes">
-        <div style="float: left; width: 25%;">
-            <div class="cardEpisode">
-                <h1 class="titleEpisode">{{ episode.episode }}</h1>
-                <h5 class="dateEpisode">
-                    <em>{{ episode.air_date }}</em>
-                </h5>
-                <h2 class="nameEpisode">
-                    {{ episode.name }}
-                </h2>
-                <RouterLink :to="{ name: 'InfoEpisode', params: { id: episode.id } }" tag="button"
-                    class="buttonMoreInfoEpisode">Plus d'infos</RouterLink>
+    <div v-if="error === ''">
+        <div v-for="episode in this.episodes">
+            <div style="float: left; width: 25%;">
+                <div class="cardEpisode">
+                    <h1 class="titleEpisode">{{ episode.episode }}</h1>
+                    <h5 class="dateEpisode">
+                        <em>{{ episode.air_date }}</em>
+                    </h5>
+                    <h2 class="nameEpisode">
+                        {{ episode.name }}
+                    </h2>
+                    <RouterLink :to="{ name: 'InfoEpisode', params: { id: episode.id } }" tag="button"
+                        class="buttonMoreInfoEpisode">Plus d'infos</RouterLink>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div v-else>
+        <Error />
     </div>
 </template>
 
@@ -78,5 +86,9 @@ export default defineComponent({
     padding-left: 3%;
     text-decoration: none;
     color: white;
+}
+
+.buttonMoreInfoEpisode:hover {
+    background-color: rgb(82, 82, 82);
 }
 </style>
